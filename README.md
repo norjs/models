@@ -50,7 +50,8 @@ See also:
   * [`InternalObjectModel`](#InternalObjectModel),
   * [`PlainObjectModel`](#PlainObjectModel),
   * [`ShallowCowModel`](#ShallowCowModel),
-  * [`Model.create(model)`](#Model.create(model))
+  * [`Model.create(model)`](#modelcreatemodel)
+  * [`Model.deleteProperty(model, key)`](#modeldeletepropertyobj-key)
 
 You can also compose your own classes a bit by bit using our factory functions:
 
