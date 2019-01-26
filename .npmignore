@@ -64,4 +64,6 @@ typings/
 /node_modules
 /*.log
 
-/dist/
+/test/
+/examples/
+/src/

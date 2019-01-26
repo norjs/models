@@ -1,0 +1,32 @@
+{
+  "name": "@norjs/models",
+  "version": "1.3.3",
+  "description": "Models for NorJS",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile-watch": "babel --watch -d dist/ src/",
+    "compile": "babel -d dist/ src/",
+    "prepare": "npm run -s compile",
+    "pretest": "npm run -s compile",
+    "test": "mocha --require @babel/register test/unit/**/*.spec.js",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/norjs/models.git"
+  },
+  "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
