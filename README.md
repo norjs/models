@@ -42,7 +42,7 @@ npm test
 
 The abstract base class for models.
 
-As an abstract class it doesn't work unless you extend from it and define 
+As an abstract class it does not work unless you extend from it and define 
 missing abstract methods, or use one of our ready to use classes. 
 
 See also:
@@ -201,7 +201,7 @@ It implements:
  * `Model#_getInternal()`
  * `Model#_setInternal(value)`.
 
-It *doesn't* implement:
+It *does not* implement:
 
  * `Model#_has(key)`
  * `Model#_get(key)`
@@ -247,7 +247,7 @@ It also implements:
  * `Model#_getInternal()` (from [InternalObjectModel](#InternalObjectModel))
  * `Model#_setInternal(value)` (from [InternalObjectModel](#InternalObjectModel))
 
-It *doesn't* implement:
+It *does not* implement:
 
  * `Model#getId()`
  * `Model#setId(value)`
@@ -285,12 +285,12 @@ to the parent objects of the modified property.
 
 You can trust that the internal object returned from a call to `#valueOf()` will 
 not be modified later (by the model class implementation). It also will not be 
-deep copied when returned since this is a *copy-on-**write**, not *copy-on-read* 
-implementation.
+deep copied when returned since this *is* a *copy on* **write**, not 
+*copy on read* implementation.
 
 Later call to `#valueOf()` may return a different object, but only if it was 
 modified, and only modified inner objects (and their parents) will point to new 
-copies. Eg. a change in a property of `"foo.bar"` doesn't modify a reference of
+copies. Eg. a change in a property of `"foo.bar"` does not modify a reference of
 an object in `"bar.foo"`.
 
 It re-implements:
@@ -305,7 +305,7 @@ It also implements:
  * `Model#_getInternal()` (from [InternalObjectModel](#InternalObjectModel))
  * `Model#_setInternal(value)` (from [InternalObjectModel](#InternalObjectModel))
 
-It *doesn't* implement:
+It *does not* implement:
 
  * `Model#getId()`
  * `Model#setId(value)`
@@ -326,7 +326,7 @@ class MyModel extends ShallowCowModelFactory(Model) {
 }
 ```
 
-It doesn't implement: 
+It does not implement: 
 
  * `Model#_has(key)`
  * `Model#_get(key)`
