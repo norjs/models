@@ -42,18 +42,30 @@ npm test
 
 The abstract base class for models.
 
-As an abstract class it doesn't work unless you extend from it and define every 
-abstract method, or use one of our factory functions to compose your own model. 
+As an abstract class it doesn't work unless you extend from it and define 
+missing abstract methods, or use one of our ready to use classes. 
 
 See also:
 
+  * [`InternalObjectModel`](#InternalObjectModel),
+  * [`PlainObjectModel`](#PlainObjectModel),
+  * [`ShallowCowModel`](#ShallowCowModel),
+  * [`Model.create(model)`](#Model.create(model))
+
+You can also compose your own classes a bit by bit using our factory functions:
+
   * [`InternalObjectModelFactory`](#InternalObjectModelFactory),
   * [`PlainObjectModelFactory`](#PlainObjectModelFactory),
-  * [`ShallowCowModelFactory`](#ShallowCowModelFactory),
+  * [`ShallowCowModelFactory`](#ShallowCowModelFactory)
+  * [`InvoiceFactory`](#InvoiceFactory)
+  * [`InvoiceRowFactory`](#InvoiceRowFactory)
+
+These factory functions make it possible to swap parts of the implementation,
+ or use your own instead.
 
 --------------------------------------------------------------------------------
 
-### `Model.create(model = undefined)`
+### `Model.create(model)`
 
 Static, public.
 
@@ -326,7 +338,13 @@ See also [ShallowCowModel](#ShallowCowModel) for ready to use abstract class.
 
 ## Invoice
 
-This is our invoice model. See 
+This is our invoice model class. See 
+[the source code](/norjs/models/blob/master/src/concretes/Invoice.js) 
+for updated inline documentation.
+
+## InvoiceFactory
+
+This is our invoice model factory function. See 
 [the source code](/norjs/models/blob/master/src/factories/InvoiceFactory.js) 
 for updated inline documentation.
 
@@ -334,7 +352,13 @@ for updated inline documentation.
 
 ## InvoiceRow
 
-This is our invoice model. See 
+This is our invoice row model class. See 
+[the source code](/norjs/models/blob/master/src/concretes/InvoiceRow.js) 
+for updated inline documentation.
+
+## InvoiceRowFactory
+
+This is our invoice row model factory function. See 
 [the source code](/norjs/models/blob/master/src/factories/InvoiceRowFactory.js) 
 for updated inline documentation.
 
