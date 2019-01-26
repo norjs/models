@@ -7,6 +7,7 @@ export class Model {
 	/**
 	 *
 	 * @param value {*}
+	 * @protected
 	 */
 	constructor (value) {}
 
