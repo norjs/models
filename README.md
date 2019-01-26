@@ -1,2 +1,1 @@
-# models
-NorJS models
+# Models for NorJS

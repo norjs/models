@@ -1,7 +1,10 @@
 import _ from 'lodash';
 
 /**
- * Construct an abstract model class with an implementation of an internal plain object for storing properties.
+ * Construct an abstract model class with an implementation of an internal plain
+ * object for storing the value of a model.
+ *
+ * This abstract class does not implement key-value property setters, getters or delete.
  *
  * @param Model {typeof Model}
  * @return {typeof InternalObjectModel}

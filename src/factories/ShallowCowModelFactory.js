@@ -1,7 +1,7 @@
 import {ModelUtils} from "../utils/ModelUtils";
 
 /**
- * Construct an abstract model class with a plain object implementation for storing properties.
+ * Construct an abstract model class with a shallow copy on write implementation for storing properties.
  *
  * @param PlainObjectModel {typeof PlainObjectModel}
  * @return {typeof ShallowCowModel}

@@ -1,7 +1,9 @@
 import {ModelUtils} from "../utils/ModelUtils";
 
 /**
- * Construct an abstract model class with a plain object implementation for storing properties.
+ * Construct an abstract model class with a plain object implementation for storing key-value properties.
+ *
+ * This abstract class does not implement internal model setter / getter.
  *
  * @param InternalObjectModel {typeof InternalObjectModel}
  * @return {typeof PlainObjectModel}
@@ -79,7 +81,6 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 				delete path.lastParent[path.lastKey];
 			}
 		}
-
 
 	}
 
