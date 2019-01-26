@@ -342,13 +342,13 @@ See also [ShallowCowModel](#ShallowCowModel) for ready to use abstract class.
 ## Invoice
 
 This is our invoice model class. See 
-[the source code](/norjs/models/blob/master/src/concretes/Invoice.js) 
+[the source code](./src/concretes/Invoice.js) 
 for updated inline documentation.
 
 ## InvoiceFactory
 
 This is our invoice model factory function. See 
-[the source code](/norjs/models/blob/master/src/factories/InvoiceFactory.js) 
+[the source code](./src/factories/InvoiceFactory.js) 
 for updated inline documentation.
 
 --------------------------------------------------------------------------------
@@ -356,13 +356,13 @@ for updated inline documentation.
 ## InvoiceRow
 
 This is our invoice row model class. See 
-[the source code](/norjs/models/blob/master/src/concretes/InvoiceRow.js) 
+[the source code](./src/concretes/InvoiceRow.js) 
 for updated inline documentation.
 
 ## InvoiceRowFactory
 
 This is our invoice row model factory function. See 
-[the source code](/norjs/models/blob/master/src/factories/InvoiceRowFactory.js) 
+[the source code](./src/factories/InvoiceRowFactory.js) 
 for updated inline documentation.
 
 --------------------------------------------------------------------------------
