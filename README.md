@@ -51,7 +51,9 @@ See also:
   * [`PlainObjectModel`](#PlainObjectModel),
   * [`ShallowCowModel`](#ShallowCowModel),
   * [`Model.create(model)`](#modelcreatemodel)
-  * [`Model.deleteProperty(model, key)`](#modeldeletepropertyobj-key)
+  * [`Model.deleteProperty(model, key)`](#modeldeletepropertyobj-key),
+  * [`InvoiceModel`](#InvoiceModel),
+  * [`InvoiceRowModel`](#InvoiceRowModel)
 
 You can also compose your own classes a bit by bit using our factory functions:
 
