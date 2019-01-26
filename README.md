@@ -52,8 +52,8 @@ See also:
   * [`ShallowCowModel`](#ShallowCowModel),
   * [`Model.create(model)`](#modelcreatemodel)
   * [`Model.deleteProperty(model, key)`](#modeldeletepropertyobj-key),
-  * [`InvoiceModel`](#InvoiceModel),
-  * [`InvoiceRowModel`](#InvoiceRowModel)
+  * [`Invoice`](#Invoice),
+  * [`InvoiceRow`](#InvoiceRow)
 
 You can also compose your own classes a bit by bit using our factory functions:
 
@@ -371,13 +371,13 @@ for updated inline documentation.
 
 --------------------------------------------------------------------------------
 
-### ModelUtils.getPathToProperty(model, key)
+### `ModelUtils.getPathToProperty(model, key)`
 
 Returns a readable and writable interface to a property inside the model object.
 
 --------------------------------------------------------------------------------
 
-### ModelUtils.shallowCopyByPath(model, path)
+### `ModelUtils.shallowCopyByPath(model, path)`
 
 Returns a new model object with the path shallow copied to the property.
 
