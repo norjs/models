@@ -285,7 +285,7 @@ to the parent objects of the modified property.
 
 You can trust that the internal object returned from a call to `#valueOf()` will 
 not be modified later (by the model class implementation). It also will not be 
-deep copied when returned since this *is* a *copy on* **write**, not 
+deep copied when returned since this *is* a *copy on* ***write***, not 
 *copy on read* implementation.
 
 Later call to `#valueOf()` may return a different object, but only if it was 
