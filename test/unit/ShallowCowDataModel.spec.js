@@ -1,16 +1,16 @@
 import _ from 'lodash';
 import assert from 'assert';
-import { ShallowCowModel } from '../../src/abstracts/ShallowCowModel.js';
+import { ShallowCowDataModel } from '../../src/abstracts/ShallowCowDataModel.js';
 
 describe('abstracts', () => {
 
-  describe('ShallowCowModel', () => {
+  describe('ShallowCowDataModel', () => {
 
-    let model, ModelClass;
+    let model, DataModelClass;
 
     beforeEach(() => {
 
-      class TestModel extends ShallowCowModel {
+      class TestDataModel extends ShallowCowDataModel {
 
         get foo () {
           return this._get("foo");
@@ -30,9 +30,9 @@ describe('abstracts', () => {
 
       }
 
-      model = TestModel.create();
+      model = TestDataModel.create();
 
-      ModelClass = TestModel;
+      DataModelClass = TestDataModel;
 
     });
 
@@ -42,8 +42,8 @@ describe('abstracts', () => {
       assert.strictEqual(model.foo, "hello");
     });
 
-    it('new ModelClass() can assign to undefined properties', () => {
-      let model2 = new ModelClass();
+    it('new DataModelClass() can assign to undefined properties', () => {
+      let model2 = new DataModelClass();
       model2.bar = "foo";
     });
 
@@ -65,7 +65,7 @@ describe('abstracts', () => {
       assert.strictEqual(model.foo, undefined);
       model.foo = "hello";
       assert.strictEqual(model.foo, "hello");
-      ModelClass.deleteProperty(model, "foo");
+      DataModelClass.deleteProperty(model, "foo");
       assert.strictEqual(model.foo, undefined);
       assert.strictEqual(_.has(model.valueOf(), "foo"), false);
     });
@@ -90,7 +90,7 @@ describe('abstracts', () => {
       let modelValue = model.valueOf();
       assert.strictEqual(modelValue.foo, "hello");
 
-      ModelClass.deleteProperty(model, "foo");
+      DataModelClass.deleteProperty(model, "foo");
       assert.strictEqual(model.foo, undefined);
       assert.strictEqual(_.has(model.valueOf(), "foo"), false);
 
@@ -111,7 +111,7 @@ describe('abstracts', () => {
       assert.strictEqual(modelValue.test.hello, "world");
       assert.strictEqual(modelValue.test, test);
 
-      ModelClass.deleteProperty(model, "foo");
+      DataModelClass.deleteProperty(model, "foo");
       assert.strictEqual(model.foo, undefined);
       assert.strictEqual(_.has(model.valueOf(), "foo"), false);
 

@@ -2,7 +2,7 @@
  *
  * @abstract
  */
-export class Model {
+export class DataModel {
 
 	/**
 	 *
@@ -15,7 +15,7 @@ export class Model {
 	 * Create instance of the class and seal it.
 	 *
 	 * @param value {*}
-	 * @returns {Model}
+	 * @returns {DataModel}
 	 */
 	static create (value) {
 		const obj = new this(value);

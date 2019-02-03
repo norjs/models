@@ -1,9 +1,9 @@
 # Models for NorJS
 
-Abstracts, factories and utils for implementing model classes in ES6 
+Abstracts, factories and utils for implementing classes in ES6 
 JavaScript.
 
-Also includes NorJS concrete model classes, which are also examples
+Also includes some NorJS concrete model classes, which are also examples
 of usage.
 
 --------------------------------------------------------------------------------
@@ -24,10 +24,10 @@ npm i --save-dev @norjs/models
 
 ### Import
 
-For eg. `Model`, use:
+For eg. `DataModel`, use:
 
 ```js
-import { Model } from "@norjs/models";
+import { DataModel } from "@norjs/models";
 ```
 
 ### Run tests
@@ -38,7 +38,7 @@ npm test
 
 --------------------------------------------------------------------------------
 
-## `Model`
+## `DataModel`
 
 The abstract base class for models.
 
@@ -47,19 +47,19 @@ missing abstract methods, or use one of our ready to use classes.
 
 See also:
 
-  * [`InternalObjectModel`](#InternalObjectModel),
-  * [`PlainObjectModel`](#PlainObjectModel),
-  * [`ShallowCowModel`](#ShallowCowModel),
-  * [`Model.create(model)`](#modelcreatemodel)
-  * [`Model.deleteProperty(model, key)`](#modeldeletepropertyobj-key),
+  * [`InternalDataModel`](#InternalDataModel),
+  * [`PlainDataModel`](#PlainDataModel),
+  * [`ShallowCowDataModel`](#ShallowCowDataModel),
+  * [`DataModel.create(model)`](#datamodelcreatemodel)
+  * [`DataModel.deleteProperty(model, key)`](#datamodeldeletepropertyobj-key),
   * [`Invoice`](#Invoice),
   * [`InvoiceRow`](#InvoiceRow)
 
 You can also compose your own classes a bit by bit using our factory functions:
 
-  * [`InternalObjectModelFactory`](#InternalObjectModelFactory),
-  * [`PlainObjectModelFactory`](#PlainObjectModelFactory),
-  * [`ShallowCowModelFactory`](#ShallowCowModelFactory)
+  * [`InternalDataModelFactory`](#InternalDataModelFactory),
+  * [`PlainDataModelFactory`](#PlainDataModelFactory),
+  * [`ShallowCowDataModelFactory`](#ShallowCowDataModelFactory)
   * [`InvoiceFactory`](#InvoiceFactory)
   * [`InvoiceRowFactory`](#InvoiceRowFactory)
 
@@ -68,7 +68,7 @@ These factory functions make it possible to swap parts of the implementation,
 
 --------------------------------------------------------------------------------
 
-### `Model.create(model)`
+### `DataModel.create(model)`
 
 Static, public.
 
@@ -77,12 +77,12 @@ model.
 
 You need to call it from your own class, of course.
 
-Eg. if your class is `MyModel extends Model`, you'll call it as 
-`const model = MyModel.create(...)`
+Eg. if your class is `MyData extends DataModel`, you'll call it as 
+`const model = MyData.create(...)`
 
 --------------------------------------------------------------------------------
 
-### `Model.deleteProperty(obj, key)`
+### `DataModel.deleteProperty(obj, key)`
 
 Static, public.
 
@@ -94,7 +94,7 @@ symbols to delete properties.
 
 --------------------------------------------------------------------------------
 
-### `Model#valueOf()`
+### `DataModel#valueOf()`
 
 Public.
 
@@ -102,7 +102,7 @@ Returns the internal value for the model. Usually it is an object.
 
 --------------------------------------------------------------------------------
 
-### `Model#getId()`
+### `DataModel#getId()`
 
 Abstract, Public.
 
@@ -111,7 +111,7 @@ key in a database table.)
 
 --------------------------------------------------------------------------------
 
-### `Model#setId(value)`
+### `DataModel#setId(value)`
 
 Abstract, Public.
 
@@ -120,16 +120,17 @@ key in a database table.)
 
 --------------------------------------------------------------------------------
 
-### `Model#constructor(value)`
+### `DataModel#constructor(value)`
 
 Protected.
 
-The constructor, which is declared as protected to disable using `new Model()` 
+The constructor, which is declared as protected to disable using `new DataModel
+()` 
 style.
 
 --------------------------------------------------------------------------------
 
-### `Model#_getInternal()`
+### `DataModel#_getInternal()`
 
 Returns the internal value for the model. Usually it is an object.
 
@@ -137,7 +138,7 @@ Abstract, protected.
 
 --------------------------------------------------------------------------------
 
-### `Model#_setInternal(value)`
+### `DataModel#_setInternal(value)`
 
 Abstract, Protected.
 
@@ -145,18 +146,18 @@ Sets the internal value of the model. Usually it's an object.
 
 --------------------------------------------------------------------------------
 
-### `Model#_has(key)`
+### `DataModel#_has(key)`
 
 Abstract, Protected.
 
 Returns `true` or `false` depending if a keyword is defined in the model's 
 internal value.
 
-See `Model#_get(key)` for more information for the keyword format.
+See `DataModel#_get(key)` for more information for the keyword format.
 
 --------------------------------------------------------------------------------
 
-### `Model#_get(key)`
+### `DataModel#_get(key)`
 
 Abstract, Protected.
 
@@ -170,114 +171,116 @@ The `key` can be:
 
 --------------------------------------------------------------------------------
 
-### `Model#_set(key, value)`
+### `DataModel#_set(key, value)`
 
 Abstract, Protected.
 
 Sets a value for a property in the model's internal value.
 
-See `Model#_get(key)` for more information for the keyword format.
+See `DataModel#_get(key)` for more information for the keyword format.
 
 --------------------------------------------------------------------------------
 
-### `Model#_delete(key)`
+### `DataModel#_delete(key)`
 
 Abstract, Protected.
 
 Delete a value for a property in the model's internal value.
 
-See `Model#_get(key)` for more information for the keyword format.
+See `DataModel#_get(key)` for more information for the keyword format.
 
 --------------------------------------------------------------------------------
 
-## InternalObjectModel
+## InternalDataModel
 
-This is an abstract class extended from `Model` which has implemented 
+This is an abstract class extended from `DataModel` which has implemented 
 interface to get and set an internal model value as a plain object.
 
 It implements: 
 
- * `Model#constructor(value = {})` using `Model#_setInternal(value)`
- * `Model#_getInternal()`
- * `Model#_setInternal(value)`.
+ * `DataModel#constructor(value = {})` using `DataModel#_setInternal(value)`
+ * `DataModel#_getInternal()`
+ * `DataModel#_setInternal(value)`.
 
 It *does not* implement:
 
- * `Model#_has(key)`
- * `Model#_get(key)`
- * `Model#_set(key, value)`
- * `Model#_delete(key)`
- * `Model#getId()`
- * `Model#setId(value)`
+ * `DataModel#_has(key)`
+ * `DataModel#_get(key)`
+ * `DataModel#_set(key, value)`
+ * `DataModel#_delete(key)`
+ * `DataModel#getId()`
+ * `DataModel#setId(value)`
  
 --------------------------------------------------------------------------------
 
-## InternalObjectModelFactory
+## InternalDataModelFactory
 
 This is a factory function which returns a class extending to the 
-provided Model class and implementing `Model#_getInternal()` and 
-`Model#_setInternal(value)` using a private member variable.
+provided DataModel class and implementing `DataModel#_getInternal()` and 
+`DataModel#_setInternal(value)` using a private member variable.
 
 ```js
-class MyModel extends InternalObjectModelFactory(Model) {
+class MyData extends InternalDataModelFactory(DataModel) {
 	// ...
 }
 ```
 
 You'll need to implement other abstract methods.
 
-See also [InternalObjectModel](#InternalObjectModel).
+See also [InternalDataModel](#InternalDataModel).
 
 --------------------------------------------------------------------------------
 
-## PlainObjectModel
+## PlainDataModel
 
-This is an abstract class extended from `InternalObjectModel` which has 
+This is an abstract class extended from `InternalDataModel` which has 
 implemented interface to get and set an internal model value as a plain object.
 
 It implements:
 
- * `Model#_has(key)`
- * `Model#_get(key)`
- * `Model#_set(key, value)`
- * `Model#_delete(key)`
+ * `DataModel#_has(key)`
+ * `DataModel#_get(key)`
+ * `DataModel#_set(key, value)`
+ * `DataModel#_delete(key)`
 
 It also implements: 
 
- * `Model#_getInternal()` (from [InternalObjectModel](#InternalObjectModel))
- * `Model#_setInternal(value)` (from [InternalObjectModel](#InternalObjectModel))
+ * `DataModel#_getInternal()` (from [InternalDataModel](#InternalDataModel))
+ * `DataModel#_setInternal(value)` (from [InternalDataModel]
+ (#InternalDataModel))
 
 It *does not* implement:
 
- * `Model#getId()`
- * `Model#setId(value)`
+ * `DataModel#getId()`
+ * `DataModel#setId(value)`
 
 --------------------------------------------------------------------------------
 
-## PlainObjectModelFactory
+## PlainDataModelFactory
 
 This is a factory function which returns a class extended from the provided 
-model class implementing `Model#_has(key)`, `Model#_get(key)`, 
-`Model#_set(key, value)` and `Model#_delete(key)`.
+model class implementing `DataModel#_has(key)`, `DataModel#_get(key)`, 
+`DataModel#_set(key, value)` and `DataModel#_delete(key)`.
 
-It implements them using `Model#_getInternal()` and 
-`Model#_setInternal(value)`, which must be implemented in the provided model or 
+It implements them using `DataModel#_getInternal()` and 
+`DataModel#_setInternal(value)`, which must be implemented in the provided model
+ or 
 later in your own class.
 
 ```js
-class MyModel extends PlainObjectModelFactory(Model) {
+class MyData extends PlainDataModelFactory(DataModel) {
 	// ...
 }
 ```
 
-See also [PlainObjectModel](#PlainObjectModel) and 
-[ShallowCowModel](#ShallowCowModel) for ready to use abstract classes.
+See also [PlainDataModel](#PlainDataModel) and 
+[ShallowCowDataModel](#ShallowCowDataModel) for ready to use abstract classes.
 
 --------------------------------------------------------------------------------
 
-## ShallowCowModel
+## ShallowCowDataModel
 
-This is a class extended from `PlainObjectModel` which implements 
+This is a class extended from `PlainDataModel` which implements 
 abstract shallow copy on write model class implementation.
 
 The shallow copy will be made only when there is a write operation and only 
@@ -295,47 +298,49 @@ an object in `"bar.foo"`.
 
 It re-implements:
  
- * `Model#_set(key, value)`
- * `Model#_delete(key)`
+ * `DataModel#_set(key, value)`
+ * `DataModel#_delete(key)`
 
 It also implements: 
 
- * `Model#_has(key)` (from [PlainObjectModel](#PlainObjectModel))
- * `Model#_get(key)`  (from [PlainObjectModel](#PlainObjectModel))
- * `Model#_getInternal()` (from [InternalObjectModel](#InternalObjectModel))
- * `Model#_setInternal(value)` (from [InternalObjectModel](#InternalObjectModel))
+ * `DataModel#_has(key)` (from [PlainDataModel](#PlainDataModel))
+ * `DataModel#_get(key)`  (from [PlainDataModel](#PlainDataModel))
+ * `DataModel#_getInternal()` (from [InternalDataModel](#InternalDataModel))
+ * `DataModel#_setInternal(value)` (from [InternalDataModel]
+ (#InternalDataModel))
 
 It *does not* implement:
 
- * `Model#getId()`
- * `Model#setId(value)`
+ * `DataModel#getId()`
+ * `DataModel#setId(value)`
  
 --------------------------------------------------------------------------------
 
-## ShallowCowModelFactory
+## ShallowCowDataModelFactory
 
 This is a factory function which returns a class extended from the provided 
-model class implementing `Model#_set(key, value)` and `Model#_delete(key)`.
+model class implementing `DataModel#_set(key, value)` and `DataModel#_delete(key)`.
 
-It implements them using abstract `Model#_setInternal(value)`, which you need
+It implements them using abstract `DataModel#_setInternal(value)`, which you need
  to implement.
 
 ```js
-class MyModel extends ShallowCowModelFactory(Model) {
+class MyData extends ShallowCowDataModelFactory(DataModel) {
 	// ...
 }
 ```
 
 It does not implement: 
 
- * `Model#_has(key)`
- * `Model#_get(key)`
- * `Model#_getInternal()`
- * `Model#_setInternal(value)`
- * `Model#getId()`
- * `Model#setId(value)`
+ * `DataModel#_has(key)`
+ * `DataModel#_get(key)`
+ * `DataModel#_getInternal()`
+ * `DataModel#_setInternal(value)`
+ * `DataModel#getId()`
+ * `DataModel#setId(value)`
 
-See also [ShallowCowModel](#ShallowCowModel) for ready to use abstract class.
+See also [ShallowCowDataModel](#ShallowCowDataModel) for ready to use abstract 
+class.
 
 --------------------------------------------------------------------------------
 
@@ -367,17 +372,17 @@ for updated inline documentation.
 
 --------------------------------------------------------------------------------
 
-## ModelUtils
+## DataModelUtils
 
 --------------------------------------------------------------------------------
 
-### `ModelUtils.getPathToProperty(model, key)`
+### `DataModelUtils.getPathToProperty(model, key)`
 
 Returns a readable and writable interface to a property inside the model object.
 
 --------------------------------------------------------------------------------
 
-### `ModelUtils.shallowCopyByPath(model, path)`
+### `DataModelUtils.shallowCopyByPath(model, path)`
 
 Returns a new model object with the path shallow copied to the property.
 

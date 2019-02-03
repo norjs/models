@@ -1,67 +1,19 @@
 /**
  * Construct an InvoiceRow class using a specific abstract Model implementation.
  *
- * @param Model {typeof PlainObjectModel}
+ * @param DataModel {typeof PlainDataModel}
  * @return {typeof InvoiceRow}
  */
-export function InvoiceRowFactory (Model) {
+export function InvoiceRowFactory (DataModel) {
 
-	class InvoiceRow extends Model {
+	class InvoiceRow extends DataModel {
 
 		/**
 		 *
-		 * @param invoiceRowId {number|undefined}
-		 * @param invoiceId {number|undefined}
-		 * @param paymentId {number|undefined}
-		 * @param campaignId {number|undefined}
-		 * @param campaignPaymentId {number|undefined}
-		 * @param productId {number|undefined}
-		 * @param updated {string|undefined}
-		 * @param creation {string|undefined}
-		 * @param startDate {string|undefined}
-		 * @param endDate {string|undefined}
-		 * @param description {string}
-		 * @param internalNote {string}
-		 * @param amount {number}
-		 * @param price {number}
-		 * @param vatPercent {number}
-		 * @param discountPercent {number}
+		 * @param value {object}
 		 */
-		constructor ({
-			invoiceRowId = undefined,
-			invoiceId = undefined,
-			paymentId = undefined,
-			campaignId = undefined,
-			campaignPaymentId = undefined,
-			productId = undefined,
-			updated = undefined,
-			creation = undefined,
-			startDate = undefined,
-			endDate = undefined,
-			description = '',
-			internalNote = '',
-			amount = 0,
-			price = 0,
-			vatPercent = 0,
-			discountPercent = 0
-		} = {}) {
-			super();
-			this.invoiceRowId = invoiceRowId;
-			this.invoiceId = invoiceId;
-			this.paymentId = paymentId;
-			this.campaignId = campaignId;
-			this.campaignPaymentId = campaignPaymentId;
-			this.productId = productId;
-			this.updated = updated;
-			this.creation = creation;
-			this.startDate = startDate;
-			this.endDate = endDate;
-			this.description = description;
-			this.internalNote = internalNote;
-			this.amount = amount;
-			this.price = price;
-			this.vatPercent = vatPercent;
-			this.discountPercent = discountPercent;
+		constructor (value = {}) {
+			super(value);
 		}
 
 		/**

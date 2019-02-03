@@ -6,20 +6,20 @@ import _ from 'lodash';
  *
  * This abstract class does not implement key-value property setters, getters or delete.
  *
- * @param Model {typeof Model}
- * @return {typeof InternalObjectModel}
+ * @param DataModel {typeof DataModel}
+ * @return {typeof InternalDataModel}
  */
-export function InternalObjectModelFactory (Model) {
+export function InternalDataModelFactory (DataModel) {
 
 	/**
 	 * Symbol for internal plain object which contains all the properties.
 	 */
-	const INTERNAL = Symbol('_model');
+	const INTERNAL = Symbol('_internal');
 
 	/**
 	 * @abstract
 	 */
-	class InternalObjectModel extends Model {
+	class InternalDataModel extends DataModel {
 
 		/**
 		 *
@@ -55,5 +55,5 @@ export function InternalObjectModelFactory (Model) {
 
 	}
 
-	return InternalObjectModel;
+	return InternalDataModel;
 }

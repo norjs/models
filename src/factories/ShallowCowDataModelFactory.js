@@ -1,17 +1,17 @@
-import {ModelUtils} from "../utils/ModelUtils";
+import {DataModelUtils} from "../utils/DataModelUtils";
 
 /**
  * Construct an abstract model class with a shallow copy on write implementation for storing properties.
  *
- * @param PlainObjectModel {typeof PlainObjectModel}
- * @return {typeof ShallowCowModel}
+ * @param PlainDataModel {typeof PlainDataModel}
+ * @return {typeof ShallowCowDataModel}
  */
-export function ShallowCowModelFactory (PlainObjectModel) {
+export function ShallowCowDataModelFactory (PlainDataModel) {
 
 	/**
 	 * @abstract
 	 */
-	class ShallowCowModel extends PlainObjectModel {
+	class ShallowCowDataModel extends PlainDataModel {
 
 		/**
 		 *
@@ -31,9 +31,9 @@ export function ShallowCowModelFactory (PlainObjectModel) {
 		 * @protected
 		 */
 		_set (key, value) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
-				const { newModel, lastParent } = ModelUtils.shallowCopyByPath(this._getInternal(), path);
+				const { newModel, lastParent } = DataModelUtils.shallowCopyByPath(this._getInternal(), path);
 				lastParent[path.lastKey] = value;
 				this._setInternal(newModel);
 			}
@@ -47,9 +47,9 @@ export function ShallowCowModelFactory (PlainObjectModel) {
 		 * @protected
 		 */
 		_delete (key) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
-				let { newModel, lastParent } = ModelUtils.shallowCopyByPath(this._getInternal(), path);
+				let { newModel, lastParent } = DataModelUtils.shallowCopyByPath(this._getInternal(), path);
 				delete lastParent[path.lastKey];
 				this._setInternal(newModel);
 			}
@@ -57,5 +57,5 @@ export function ShallowCowModelFactory (PlainObjectModel) {
 
 	}
 
-	return ShallowCowModel;
+	return ShallowCowDataModel;
 }

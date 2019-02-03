@@ -3,7 +3,7 @@ import _ from 'lodash';
 /**
  *
  */
-export class ModelUtils {
+export class DataModelUtils {
 
 	/**
 	 * Returns an API for accessing a property in an object.

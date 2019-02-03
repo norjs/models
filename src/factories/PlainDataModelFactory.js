@@ -1,19 +1,19 @@
-import {ModelUtils} from "../utils/ModelUtils";
+import {DataModelUtils} from "../utils/DataModelUtils";
 
 /**
  * Construct an abstract model class with a plain object implementation for storing key-value properties.
  *
  * This abstract class does not implement internal model setter / getter.
  *
- * @param InternalObjectModel {typeof InternalObjectModel}
- * @return {typeof PlainObjectModel}
+ * @param InternalDataModel {typeof InternalDataModel}
+ * @return {typeof PlainDataModel}
  */
-export function PlainObjectModelFactory (InternalObjectModel) {
+export function PlainDataModelFactory (InternalDataModel) {
 
 	/**
 	 * @abstract
 	 */
-	class PlainObjectModel extends InternalObjectModel {
+	class PlainDataModel extends InternalDataModel {
 
 		/**
 		 *
@@ -31,7 +31,7 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 		 * @protected
 		 */
 		_has (key) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
 				return path.lastParent[path.lastKey];
 			}
@@ -46,7 +46,7 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 		 * @protected
 		 */
 		_get (key) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
 				return path.lastParent[path.lastKey];
 			}
@@ -62,7 +62,7 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 		 * @protected
 		 */
 		_set (key, value) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
 				path.lastParent[path.lastKey] = value;
 			}
@@ -76,7 +76,7 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 		 * @protected
 		 */
 		_delete (key) {
-			const path = ModelUtils.getPathToProperty(this._getInternal(), key);
+			const path = DataModelUtils.getPathToProperty(this._getInternal(), key);
 			if (path.lastParent && path.lastKey) {
 				delete path.lastParent[path.lastKey];
 			}
@@ -84,5 +84,5 @@ export function PlainObjectModelFactory (InternalObjectModel) {
 
 	}
 
-	return PlainObjectModel;
+	return PlainDataModel;
 }

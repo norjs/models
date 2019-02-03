@@ -1,94 +1,19 @@
 /**
  * Construct an Invoice class using a specific abstract Model implementation.
  *
- * @param Model {typeof PlainObjectModel}
+ * @param DataModel {typeof PlainDataModel}
  * @return {typeof Invoice}
  */
-export function InvoiceFactory (Model) {
+export function InvoiceFactory (DataModel) {
 
-	class Invoice extends Model {
+	class Invoice extends DataModel {
 
 		/**
 		 *
-		 * @param invoiceId {number|undefined}
-		 * @param clientId {number|undefined}
-		 * @param campaignId {number|undefined}
-		 * @param groupId {number|undefined}
-		 * @param bankAccountId {number|undefined}
-		 * @param wcOrderId {number|undefined}
-		 * @param updated {string|undefined}
-		 * @param creation {string|undefined}
-		 * @param date {string|undefined}
-		 * @param dueDate {string|undefined}
-		 * @param remindDate {string|undefined}
-		 * @param checkoutDate {string|undefined}
-		 * @param referenceNumber {string}
-		 * @param internalNote {string}
-		 * @param extraNotice {string}
-		 * @param webSecret {string}
-		 * @param checkoutStamp {string}
-		 * @param onHold {boolean}
-		 * @param isReminded {boolean}
-		 * @param onCollection {boolean}
-		 * @param isTerminated {boolean}
-		 * @param buildDocuments {boolean}
-		 * @param sendDocuments {boolean}
-		 * @param dueDays {number}
-		 * @param rows {Array.<InvoiceRow>}
+		 * @param value {object}
 		 */
-		constructor ({
-			invoiceId = undefined,
-			clientId = undefined,
-			campaignId = undefined,
-			groupId = undefined,
-			bankAccountId = undefined,
-			wcOrderId = undefined,
-			updated = undefined,
-			creation = undefined,
-			date = undefined,
-			dueDate = undefined,
-			remindDate = undefined,
-			checkoutDate = undefined,
-			referenceNumber = '',
-			internalNote = '',
-			extraNotice = '',
-			webSecret = '',
-			checkoutStamp = '',
-			onHold = false,
-			isReminded = false,
-			onCollection = false,
-			isTerminated = false,
-			buildDocuments = false,
-			sendDocuments = false,
-			dueDays = 14,
-			rows = []
-		} = {}) {
-			super();
-			this.invoiceId = invoiceId;
-			this.clientId = clientId;
-			this.campaignId = campaignId;
-			this.groupId = groupId;
-			this.bankAccountId = bankAccountId;
-			this.wcOrderId = wcOrderId;
-			this.updated = updated;
-			this.creation = creation;
-			this.date = date;
-			this.dueDate = dueDate;
-			this.remindDate = remindDate;
-			this.checkoutDate = checkoutDate;
-			this.referenceNumber = referenceNumber;
-			this.internalNote = internalNote;
-			this.extraNotice = extraNotice;
-			this.webSecret = webSecret;
-			this.checkoutStamp = checkoutStamp;
-			this.onHold = onHold;
-			this.isReminded = isReminded;
-			this.onCollection = onCollection;
-			this.isTerminated = isTerminated;
-			this.buildDocuments = buildDocuments;
-			this.sendDocuments = sendDocuments;
-			this.dueDays = dueDays;
-			this.setRows(rows);
+		constructor (value = {}) {
+			super(value);
 		}
 
 		/**
