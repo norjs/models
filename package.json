@@ -1,6 +1,6 @@
 {
   "name": "@norjs/models",
-  "version": "1.4.0",
+  "version": "1.4.10",
   "description": "Models for NorJS",
   "main": "dist/index.js",
   "scripts": {
@@ -27,6 +27,6 @@
     "sinon": "^7.2.2"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   }
 }
